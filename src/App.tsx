@@ -19,7 +19,7 @@ function App() {
   }
 
   function handleClick(){
-    console.log('res is: '+ message);
+    console.log('res is updating github: '+ message);
   }
   
   return (

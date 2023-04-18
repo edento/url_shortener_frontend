@@ -24,10 +24,10 @@ function App() {
     const requestOptions = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ title: 'React POST Request Example' })
+      body: JSON.stringify({ url: url})
     };
     console.log('to fetch : '+'http://localhost:3000/'+url)
-    fetch('http://localhost:3000/'+url, requestOptions)
+    fetch('http://localhost:3000/create', requestOptions)
     .then((response) => response.json())
     .then((responseJson)=>{setShortenedUrl(responseJson.short)})
     .catch(()=>{

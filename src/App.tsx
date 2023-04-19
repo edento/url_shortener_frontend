@@ -6,7 +6,7 @@ function App() {
   // states for changes in the long url the user is typing into the box (ex. www.google.com)
   const [longUrl, setLongUrl] = useState("");
   const [isLongUrlValid, setIsLongUrlValid] = useState(false);
-  const [isTyping, setIsTyping] = useState(false);
+  const [isTyping, setIsTyping] = useState(true);
   
   const [shortenedUrl, setShortenedUrl] = useState("");
 
@@ -32,7 +32,7 @@ function App() {
     <div>
       <Input setIsLongUrlValid={setIsLongUrlValid} setLongUrl={setLongUrl} setIsTyping={setIsTyping}></Input>
       {isTyping && <Button disabled={!isLongUrlValid} onClick={handleClick} >SHORTEN</Button>}
-      <p>{shortenedUrl}</p>
+      {!isTyping && <p>{shortenedUrl}</p>}
     </div>
   );
 }

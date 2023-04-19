@@ -15,7 +15,6 @@ interface Props{
 }
   
 const Input = (props: Props) => {
-
     function handleChange(value: string) {
         props.setIsTyping(true);
         if (isUrlValid(value)) {
@@ -33,7 +32,7 @@ const Input = (props: Props) => {
             id="basic-url"
             aria-describedby="basic-addon3 basic-addon4"
             placeholder="www.google.com"
-
+            
             onChange={(e) => {
                 handleChange(e.target.value);
             }}

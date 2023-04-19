@@ -18,6 +18,13 @@ const Input = (props: Props) => {
     function handleChange(value: string) {
         props.setIsTyping(true);
         if (isUrlValid(value)) {
+
+            // discard https://
+            if(value.includes('https://'))
+                value = value.substring(8);
+            else if(value.includes('http://'))
+                value = value.substring(7);
+
             props.setIsLongUrlValid(true);
             props.setLongUrl(value);
         } else {

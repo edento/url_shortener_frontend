@@ -7,7 +7,7 @@ function App() {
   const [longUrl, setLongUrl] = useState("");
   const [isLongUrlValid, setIsLongUrlValid] = useState(false);
   const [isTyping, setIsTyping] = useState(true);
-  
+
   const [shortenedUrl, setShortenedUrl] = useState("");
 
   const handleClick = () => {
@@ -16,11 +16,12 @@ function App() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ url: longUrl }),
     };
-    //console.log("to fetch : " + "http://localhost:3000/" + shortenedUrl);
+
     fetch("http://localhost:3000/create", requestOptions)
       .then((response) => response.json())
       .then((responseJson) => {
-        setShortenedUrl(responseJson.short);
+        const shortUrlComplete = "localhost:3000/" + responseJson.short;
+        setShortenedUrl(shortUrlComplete);
         setIsTyping(false);
       })
       .catch(() => {
@@ -30,8 +31,16 @@ function App() {
 
   return (
     <div>
-      <Input setIsLongUrlValid={setIsLongUrlValid} setLongUrl={setLongUrl} setIsTyping={setIsTyping}></Input>
-      {isTyping && <Button disabled={!isLongUrlValid} onClick={handleClick} >SHORTEN</Button>}
+      <Input
+        setIsLongUrlValid={setIsLongUrlValid}
+        setLongUrl={setLongUrl}
+        setIsTyping={setIsTyping}
+      ></Input>
+      {isTyping && (
+        <Button disabled={!isLongUrlValid} onClick={handleClick}>
+          SHORTEN
+        </Button>
+      )}
       {!isTyping && <p>{shortenedUrl}</p>}
     </div>
   );

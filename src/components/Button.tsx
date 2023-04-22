@@ -5,7 +5,7 @@ interface Props{
 }
 
 const Button = ( {children, onClick, disabled}:Props ) => {
-  return <button disabled={disabled} onClick={onClick}>{children}</button>;
+    return <button disabled={disabled} onClick={onClick}>{children}</button>;
 };
 
 export default Button;

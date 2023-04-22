@@ -20,7 +20,7 @@ function App() {
         fetch('http://localhost:3000/create', requestOptions)
             .then((response) => response.json())
             .then((responseJson) => {
-                const shortUrlComplete = 'localhost:3000/' + responseJson.short;
+                const shortUrlComplete = `localhost:3000/${responseJson.short}`;
                 setShortenedUrl(shortUrlComplete);
                 setIsTyping(false);
             })

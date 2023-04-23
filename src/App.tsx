@@ -3,6 +3,7 @@ import Input from './components/Input';
 import { useState } from 'react';
 
 function App() {
+    
     // states for changes in the long url the user is typing into the box (ex. www.google.com)
     const [longUrl, setLongUrl] = useState('');
     const [isLongUrlValid, setIsLongUrlValid] = useState(false);
@@ -17,7 +18,7 @@ function App() {
             body: JSON.stringify({ url: longUrl }),
         };
 
-        fetch('http://localhost:3000/create', requestOptions)
+        fetch(import.meta.env.VITE_BACKEND_URL+'/create', requestOptions)
             .then((response) => response.json())
             .then((responseJson) => {
                 const shortUrlComplete = `localhost:3000/${responseJson.short}`;

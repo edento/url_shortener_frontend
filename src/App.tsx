@@ -21,7 +21,7 @@ function App() {
         fetch(import.meta.env.VITE_BACKEND_URL+'/create', requestOptions)
             .then((response) => response.json())
             .then((responseJson) => {
-                const shortUrlComplete = `localhost:3000/${responseJson.short}`;
+                const shortUrlComplete = `${import.meta.env.VITE_BACKEND_URL}/${responseJson.short}`;
                 setShortenedUrl(shortUrlComplete);
                 setIsTyping(false);
             })
